@@ -10,7 +10,7 @@ init-db:
 install-deps: install-backend-deps install-frontend-deps
 
 install-backend-deps:
-	docker run --rm -v $(PWD):/app -w /app -u 1000:1000 composer composer install --ignore-platform-reqs
+	docker run --rm -v $(shell pwd):/app -w /app -u 1000:1000 composer composer install --ignore-platform-reqs
 
 install-frontend-deps:
-	docker run --rm -v $(PWD):/app -w /app -u 1000:1000 node:22.0.0-alpine npm ci
+	docker run --rm -v $(shell pwd):/app -w /app -u 1000:1000 node:22.0.0-alpine npm ci
