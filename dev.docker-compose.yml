@@ -1,0 +1,26 @@
+services:
+  php:
+    build:
+      context: .
+    volumes:
+      - ./:/var/www
+    ports:
+      - "8000:8000"
+    command:
+      - php
+      - artisan
+      - serve
+      - --host
+      - 0.0.0.0
+  node:
+    build:
+      context: .
+    volumes:
+      - ./:/var/www
+    ports:
+      - "5173:5173"
+    command:
+      - bash
+      - --login
+      - -c
+      - "npm run dev -- --host"
